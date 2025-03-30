@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .timetable {
+            margin: 2rem;
+            background: var(--color-white);
+            padding: var(--card-padding);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .timetable-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .day-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .day-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius-1);
+            background: var(--color-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .day-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-light);
+        }
+        th {
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+        }
+        .lecture {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .practical {
+            background: var(--color-success);
+            color: var(--color-white);
+        }
+        .tutorial {
+            background: var(--color-warning);
+            color: var(--color-white);
+        }
+        .timetable-content > div {
+            display: none;
+        }
+        .timetable-content > div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+            <h2>MUET</h2>
+        </div>
+        <div class="navbar">
+            <a href="index.html">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="timetable.html" class="active">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a> 
+            <a href="exam.html">
+                <span class="material-icons-sharp">quiz</span>
+                <h3>Study Reminder</h3>
+            </a>
+            <a href="#" class="logout">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="timetable">
+            <div class="timetable-header">
+                <h2>Class Time Table</h2>
+            </div>
+            <div class="day-selector">
+                <button class="day-btn" onclick="showDay('monday')">Monday</button>
+                <button class="day-btn" onclick="showDay('tuesday')">Tuesday</button>
+                <button class="day-btn" onclick="showDay('wednesday')">Wednesday</button>
+                <button class="day-btn" onclick="showDay('thursday')">Thursday</button>
+                <button class="day-btn" onclick="showDay('friday')">Friday</button>
+            </div>
+            <div class="timetable-content">
+                <div id="monday" class="day-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 08:45</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks (CN)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>08:45 - 09:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Statistics and Probability (SP)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Anwar Solangi (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 - 10:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Software Engineering (SE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Faiz Nadeem Aalmani (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>10:15 - 11:00</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Microprocessors and Interfacing (MIT)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Ahsan Ansari (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 01:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering PR*</td>
+                                <td><span class="badge practical">Practical</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tuesday" class="day-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 08:45</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Software Engineering (SE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Faiz Nadeem Aalmani (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>08:45 - 09:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Statistics and Probability (SP)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Anwar Solangi (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 - 10:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks (CN)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>10:15 - 11:00</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering (WE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 01:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering PR</td>
+                                <td><span class="badge practical">Practical</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>01:15 - 02:00</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks*</td>
+                                <td><span class="badge tutorial">Tutorial</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="wednesday" class="day-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 08:45</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering (WE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>08:45 - 09:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Statistics and Probability (SP)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Anwar Solangi (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 - 10:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Microprocessors and Interfacing (MIT)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Ahsan Ansari (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>10:15 - 11:00</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering (WE)</td>
+                                <td><span class="badge tutorial">Tutorial</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>11:45 - 12:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks PR</td>
+                                <td><span class="badge practical">Practical</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="thursday" class="day-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 08:45</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks (CN)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>08:45 - 09:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Software Engineering (SE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Faiz Nadeem Aalmani (TH)</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 - 10:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Microprocessors and Interfacing (MIT)</td>
+                                <td><span class="badge tutorial">Tutorial</span></td>
+                                <td>Dr. Ahsan Ansari (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>10:15 - 11:00</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Web Engineering (WE)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Engr. Zaib Ul Nissa (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>11:45 - 12:30</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Computer Networks PR</td>
+                                <td><span class="badge tutorial">Tutorial</span></td>
+                                <td>Engr. Kainat (TH & PR)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="friday" class="day-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 08:45</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Microprocessors and Interfacing (MIT)</td>
+                                <td><span class="badge lecture">Lecture</span></td>
+                                <td>Dr. Ahsan Ansari (TH & PR)</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 - 10:15</td>
+                                <td>CSE Room No. 02</td>
+                                <td>Microprocessors and Interfacing PR</td>
+                                <td><span class="badge practical">Practical</span></td>
+                                <td>Dr. Ahsan Ansari (TH & PR)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Show/hide day schedules
+        function showDay(day) {
+            document.querySelectorAll('.day-schedule').forEach(schedule => {
+                schedule.style.display = 'none';
+            });
+            document.getElementById(day).style.display = 'block';
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === day) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        window.onload = function() {
+            showDay('monday');
+            document.querySelector('.day-btn').classList.add('active');
+            
+            // Check for saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark-theme') {
+                document.body.classList.add('dark-theme');
+                themeToggler.querySelector('span:nth-child(1)').classList.remove('active');
+                themeToggler.querySelector('span:nth-child(2)').classList.add('active');
+            }
+        }
+
+        // Theme toggler
+        const themeToggler = document.querySelector(".theme-toggler");
+        themeToggler.onclick = function() {
+            document.body.classList.toggle('dark-theme');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme');
+        }
+    </script>
+</body>
+</html>

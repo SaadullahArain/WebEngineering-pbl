@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="muet Logo">
+            <!-- <h2>U<span class="danger">M</span>S</h2> -->
+            <h2>MUET</h2>
+        </div>
+        <div class="menu-toggle">
+            <span class="material-icons-sharp">menu</span>
+        </div>
+        <div class="navbar">
+            <a href="index.html" class="active">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="profile.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="timetable.html" onclick="timeTableAll()">
+                <span class="material-icons-sharp">schedule</span>
+                <h3>Time Table</h3> 
+            </a> 
+            <a href="exam.html">
+                <span class="material-icons-sharp">quiz</span>
+                <h3>Reminder</h3>
+            </a>
+            <a href="settings.html">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Settings</h3>
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside style="padding: 0,0,0,40px;">
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/profile-1.png" alt="Profile Photo">
+                        <div class="photo-upload">
+                            <!-- <span class="material-icons-sharp">camera_alt</span> -->
+                            <input type="file" id="photo-upload" accept="image/*" hidden>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p>SAADULLAH ARAIN</p>
+                        <small class="text-muted">Student ID: 22CS084</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <div class="info-item">
+                        <h5>Course</h5>
+                        <p>Bachelor of Computer System & Engineering</p>
+                    </div>
+                    <div class="info-item">
+                        <h5>Date of Birth</h5>
+                        <p>10-09-2004</p>
+                    </div>
+                    <div class="info-item">
+                        <h5>Contact</h5>
+                        <p>03433333333</p>
+                    </div>
+                    <div class="info-item">
+                        <h5>Email</h5>
+                        <p>22CS084@muet.edu.pk</p>
+                    </div>
+                    <div class="info-item">
+                        <h5>Address</h5>
+                        <p>House 3c Block 17 Sattelite Town Mirpurkhas</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="dashboard-header">
+                <h1>Dashboard Overview</h1>
+                <div class="date">
+                    <span class="material-icons-sharp">calendar_today</span>
+                    <p>Today, <span id="current-date"></span></p>
+                </div>
+            </div>
+
+            <div class="subjects">
+                <div class="subject-card">
+                    <span class="material-icons-sharp">code</span>
+                    <h3>Web Engineering</h3>
+                    <p class="teacher">Engr. Zaib Ul Nissa</p>
+                    <div class="attendance">
+                        <h2>26/32</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>81%</p></div>
+                        </div>
+                    </div>
+                  <!-- /  <small class="text-muted">Last attended: Today</small> -->
+                </div>
+                <div class="subject-card">
+                    <span class="material-icons-sharp">router</span>
+                    <h3>Computer Networking</h3>
+                    <p class="teacher">Engr. Kainat Memon</p>
+                    <div class="attendance">
+                        <h2>30/31</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>93%</p></div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last attended: Yesterday</small> -->
+                </div>
+                <div class="subject-card">
+                    <span class="material-icons-sharp">engineering</span>
+                    <h3>Software Engineering</h3>
+                    <p class="teacher">Engr. Faiz Nadeem</p>
+                    <div class="attendance">
+                        <h2>28/30</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>93%</p></div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last attended: Today</small> -->
+                </div>
+                <div class="subject-card">
+                    <span class="material-icons-sharp">analytics</span>
+                    <h3>Statistics and Probability</h3>
+                    <p class="teacher">Dr. Anwar Solangi</p>
+                    <div class="attendance">
+                        <h2>26/29</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>90%</p></div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last attended: Today</small> -->
+                </div>
+                <div class="subject-card">
+                    <span class="material-icons-sharp">memory</span>
+                    <h3>Microprocessors and Interfacing</h3>
+                    <p class="teacher">Dr. Ahsan Ansari</p>
+                    <div class="attendance">
+                        <h2>30/33</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>91%</p></div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last attended: Yesterday</small> -->
+                </div>
+            </div> 
+
+        <div class="right">
+            <div class="announcements">
+                <h2>Upcoming Quizes</h2>
+                <div class="updates">
+                    <div class="message">
+                        <div class="message-icon">
+                            <span class="material-icons-sharp">code</span>
+                        </div>
+                        <div class="message-content">
+                            <p><b>WEB Engineering</b> CEP will be submit on 10th of May .</p>
+                            <small class="text-muted">2 Minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-icon">
+                            <span class="material-icons-sharp">memory</span>
+                        </div>
+                        <div class="message-content">
+                            <p><b>MIT</b> 2nd sessional test will be held on 14th May</p>
+                            <small class="text-muted">10 Minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="message-icon">
+                            <span class="material-icons-sharp">quiz</span>
+                        </div>
+                        <div class="message-content">
+                            <p><b>Examination</b> Final exams will be start from 1st May.</p>
+                            <small class="text-muted">Yesterday</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaves">
+                <h2>SubjectTeachers</h2>
+                <div class="teacher">
+                    <div class="profile-photo">
+                        <img src="./images/profile-2.jpeg" alt="Teacher 1">
+                        <span class="status"></span>
+                    </div>
+                    <div class="info">
+                        <h3>Dr. Anwar Solangi</h3>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo">
+                        <img src="./images/profile-3.jpg" alt="Teacher 2">
+                        <span class="status"></span>
+                    </div>
+                    <div class="info">
+                        <h3>Engr. Zaib Ul Nissa</h3>
+        
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo">
+                        <img src="./images/profile-4.jpg" alt="Teacher 3">
+                        <span class="status"></span>
+                    </div>
+                    <div class="info">
+                        <h3>Dr. Ahsan Ansari</h3>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo">
+                        <img src="./images/profile-5.jpeg" alt="Teacher 4">
+                        <span class="status"></span>
+                    </div>
+                    <div class="info">
+                        <h3>Engr. Kainat Memon</h3>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo">
+                        <img src="./images/profile-6.jpeg" alt="Teacher 5">
+                        <span class="status"></span>
+                    </div>
+                    <div class="info">
+                        <h3>Engr. Faiz Nadeem Aalmani</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

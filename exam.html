@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Reminders - Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .study-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem;
+        }
+
+        .course-progress, .study-reminders {
+            background: var(--color-white);
+            padding: var(--card-padding);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-card {
+            background: var(--color-light);
+            padding: 1rem;
+            border-radius: var(--border-radius-1);
+            margin-bottom: 1rem;
+        }
+
+        .progress-card h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 0.8rem;
+            background: var(--color-light);
+            border-radius: var(--border-radius-1);
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: var(--border-radius-1);
+        }
+
+        .reminder-form {
+            margin-bottom: 1.5rem;
+        }
+
+        .reminder-form input, .reminder-form select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--color-light);
+            border-radius: var(--border-radius-1);
+        }
+
+        .reminder-form button {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius-1);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .reminder-form button:hover {
+            background: var(--color-primary-light);
+        }
+
+        .reminder-list {
+            margin-top: 1rem;
+        }
+
+        .reminder-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem;
+            background: var(--color-light);
+            border-radius: var(--border-radius-1);
+            margin-bottom: 0.5rem;
+        }
+
+        .reminder-item .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .reminder-item .actions span {
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: var(--color-white);
+        }
+
+        .high { background: var(--color-danger); }
+        .medium { background: var(--color-warning); }
+        .low { background: var(--color-success); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+            <h2>MUET</h2>
+        </div>
+        <div class="menu-toggle">
+            <span class="material-icons-sharp">menu</span>
+        </div>
+        <div class="navbar">
+            <a href="index.html">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a>
+            <a href="exam.html" class="active">
+                <span class="material-icons-sharp">notifications_active</span>
+                <h3>Study Reminders</h3>
+            </a>
+            <a href="settings.html">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Settings</h3>
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="study-container">
+            <div class="course-progress">
+                <div class="course-header">
+                    <h2>Course Progress</h2>
+                    <span class="material-icons-sharp">more_vert</span>
+                </div>
+                
+                <div class="progress-card">
+                    <h3><span class="material-icons-sharp">code</span>Web Engineering</h3>
+                    <p>12 of 15 lessons completed</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                    <small>80% Complete</small>
+                </div>
+
+                <div class="progress-card">
+                    <h3><span class="material-icons-sharp">router</span>Computer Networks</h3>
+                    <p>8 of 12 lessons completed</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 67%"></div>
+                    </div>
+                    <small>67% Complete</small>
+                </div>
+
+                <div class="progress-card">
+                    <h3><span class="material-icons-sharp">memory</span>Microprocessors</h3>
+                    <p>14 of 16 lessons completed</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%"></div>
+                    </div>
+                    <small>88% Complete</small>
+                </div>
+
+                <div class="progress-card">
+                    <h3><span class="material-icons-sharp">analytics</span>Statistics</h3>
+                    <p>10 of 14 lessons completed</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 71%"></div>
+                    </div>
+                    <small>71% Complete</small>
+                </div>
+            </div>
+
+            <div class="study-reminders">
+                <h2>Study Reminders</h2>
+                <div class="reminder-form">
+                    <input type="text" placeholder="Reminder Title" id="reminderTitle">
+                    <select id="reminderCourse">
+                        <option value="">Select Course</option>
+                        <option value="web">Web Engineering</option>
+                        <option value="networks">Computer Networks</option>
+                        <option value="micro">Microprocessors</option>
+                        <option value="stats">Statistics</option>
+                    </select>
+                    <input type="datetime-local" id="reminderTime">
+                    <select id="reminderPriority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <button onclick="addReminder()">Add Reminder</button>
+                </div>
+
+                <div class="reminder-list">
+                    <div class="reminder-item">
+                        <div>
+                            <h4>Complete Web Project</h4>
+                            <small>Today, 3:00 PM</small>
+                        </div>
+                        <span class="badge high">High</span>
+                        <div class="actions">
+                            <span class="material-icons-sharp">edit</span>
+                            <span class="material-icons-sharp">delete</span>
+                        </div>
+                    </div>
+
+                    <div class="reminder-item">
+                        <div>
+                            <h4>Networks Quiz Preparation</h4>
+                            <small>Tomorrow, 10:00 AM</small>
+                        </div>
+                        <span class="badge medium">Medium</span>
+                        <div class="actions">
+                            <span class="material-icons-sharp">edit</span>
+                            <span class="material-icons-sharp">delete</span>
+                        </div>
+                    </div>
+
+                    <div class="reminder-item">
+                        <div>
+                            <h4>Statistics Assignment</h4>
+                            <small>May 15, 2:00 PM</small>
+                        </div>
+                        <span class="badge low">Low</span>
+                        <div class="actions">
+                            <span class="material-icons-sharp">edit</span>
+                            <span class="material-icons-sharp">delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme toggler functionality
+        const themeToggler = document.querySelector(".theme-toggler");
+        themeToggler.onclick = function() {
+            document.body.classList.toggle('dark-theme');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme');
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark-theme') {
+            document.body.classList.add('dark-theme');
+            themeToggler.querySelector('span:nth-child(1)').classList.remove('active');
+            themeToggler.querySelector('span:nth-child(2)').classList.add('active');
+        }
+
+        // Add reminder functionality
+        function addReminder() {
+            const title = document.getElementById('reminderTitle').value;
+            const course = document.getElementById('reminderCourse').value;
+            const time = document.getElementById('reminderTime').value;
+            const priority = document.getElementById('reminderPriority').value;
+
+            if (!title || !course || !time || !priority) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const reminderList = document.querySelector('.reminder-list');
+            const reminderItem = document.createElement('div');
+            reminderItem.className = 'reminder-item';
+            
+            const dateObj = new Date(time);
+            const formattedDate = dateObj.toLocaleString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric', 
+                hour12: true 
+            });
+
+            reminderItem.innerHTML = `
+                <div>
+                    <h4>${title}</h4>
+                    <small>${formattedDate}</small>
+                </div>
+                <span class="badge ${priority}">${priority.charAt(0).toUpperCase() + priority.slice(1)}</span>
+                <div class="actions">
+                    <span class="material-icons-sharp">edit</span>
+                    <span class="material-icons-sharp">delete</span>
+                </div>
+            `;
+
+            reminderList.insertBefore(reminderItem, reminderList.firstChild);
+
+            // Clear form
+            document.getElementById('reminderTitle').value = '';
+            document.getElementById('reminderCourse').value = '';
+            document.getElementById('reminderTime').value = '';
+            document.getElementById('reminderPriority').value = 'low';
+        }
+
+        // Delete reminder functionality
+        document.querySelector('.reminder-list').addEventListener('click', function(e) {
+            if (e.target.textContent === 'delete') {
+                e.target.closest('.reminder-item').remove();
+            }
+        });
+    </script>
+</body>
+</html>

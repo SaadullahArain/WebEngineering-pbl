@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="UMS Logo">
+            <h2>MUET</h2>
+        </div>
+        <div class="menu-toggle">
+            <span class="material-icons-sharp">menu</span>
+        </div>
+        <div class="navbar">
+            <a href="index.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="profile.html" class="active">
+                <span class="material-icons-sharp">person</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">schedule</span>
+                <h3>TimeTable</h3> 
+            </a> 
+            <a href="exam.html">
+                <span class="material-icons-sharp">quiz</span>
+                <h3>Study Reminder</h3>
+            </a>
+            <a href="settings.html">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Settings</h3>
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main style="width: 400px;">
+            <div class="profile-page">
+                <div class="profile-header">
+                    <h1>My Profile</h1>
+                    <button class="edit-profile-btn">
+                        <span class="material-icons-sharp">edit</span>
+                        Edit Profile
+                    </button>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <div class="profile-photo-large">
+                            <img src="./images/profile-1.png" alt="Profile Photo">
+                            <div class="photo-upload">
+                                <label for="photo-upload" class="upload-label">
+                                    <span class="material-icons-sharp">camera_alt</span>
+                                    <span>Change Photo</span>
+                                </label>
+                                <input type="file" id="photo-upload" accept="image/*" hidden>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h2>SAADULLAH ARAIN</h2>
+                            <p class="student-id">Student ID: 22CS084</p>
+                            <p class="department">Department of Computer Systems Engineering</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-details">
+                        <div class="detail-section">
+                            <h3>Personal Information</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Date of Birth</label>
+                                    <p>10-09-2004</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Email</label>
+                                    <p>22CS084@muet.edu.pk</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Contact</label>
+                                    <p>03433333333</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Address</label>
+                                    <p>House 3c Block 17 Sattelite Town Mirpurkhas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Academic Information</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Course</label>
+                                    <p>Bachelor of Computer System & Engineering</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Semester</label>
+                                    <p>5th Semester</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Batch</label>
+                                    <p>2022-2026</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>CGPA</label>
+                                    <p>2.92</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <span class="skill-name">Web Development</span>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Programming</span>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Database</span>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Networking</span>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
